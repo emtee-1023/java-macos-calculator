@@ -15,7 +15,7 @@ public class Main extends JFrame implements ActionListener {
             "2ⁿᵈ", "x²", "x³", "xʸ", "eˣ", "10ˣ", "7", "8", "9", "x",
             "1/x", "²√x", "³√x", "ʸ√x", "ln", "log₁₀", "4", "5", "6", "-",
             "x!", "sin", "cos", "tan", "e", "EE", "1", "2", "3", "+",
-            "Rad", "sinh", "cosh", "tanh", "π", "Rand", "0","", ".", "="
+            "Rad", "sinh", "cosh", "tanh", "π", "Rand", "0","000", ".", "="
     };
     private int operator = 0;
     private JPanel panel = new JPanel(new BorderLayout(0, 0));
@@ -64,7 +64,6 @@ public class Main extends JFrame implements ActionListener {
 
         } else if (Arrays.binarySearch(zero, i) >=0) {
             btns[i].setBackground(new Color(100, 100, 98));
-            btns[i].setMargin(new Insets(0, 35, 0, -5));
             gbc.gridwidth = 2;
         }
         
@@ -116,6 +115,9 @@ public class Main extends JFrame implements ActionListener {
                     if (!screen.getText().contains(".")) {
                         screen.setText(screen.getText() + ".");
                     }
+                    break;
+                case "000":
+                    screen.setText(screen.getText() + "000");
                     break;
                 case "0":
                     screen.setText(screen.getText() + "0");
