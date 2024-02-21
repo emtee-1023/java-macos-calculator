@@ -202,9 +202,12 @@ public class Main extends JFrame implements ActionListener {
                     break;
 
                 case "%":
-                    double num = Double.parseDouble(screen.getText().toString());
-                    screen.setText(String.valueOf(num / 100.0));
-                    break;
+                if (!screen.getText().isEmpty()) {
+                    firstNum = Double.parseDouble(screen.getText().toString());
+                    operator = 7;
+                    screen.setText("");
+                }
+                break;
                 
                 case "+/-":
                     String currentText = screen.getText();
@@ -265,6 +268,10 @@ public class Main extends JFrame implements ActionListener {
                             break;
                         case 6: // ʸ√x
                             screen.setText(String.valueOf(Math.pow(firstNum, (1 / secondNum))));
+                            break;
+                        
+                        case 7: // Modulus
+                            screen.setText(String.valueOf(firstNum % secondNum));
                             break;
                         default:
                     }
