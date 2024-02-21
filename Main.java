@@ -15,7 +15,7 @@ public class Main extends JFrame implements ActionListener {
             "2ⁿᵈ", "x²", "x³", "xʸ", "eˣ", "10ˣ", "7", "8", "9", "x",
             "1/x", "²√x", "³√x", "ʸ√x", "ln", "log₁₀", "4", "5", "6", "-",
             "x!", "sin", "cos", "tan", "e", "EE", "1", "2", "3", "+",
-            "Rad", "sinh", "cosh", "tanh", "π", "Rand", "0","0", ".", "="
+            "Rad", "sinh", "cosh", "tanh", "π", "Rand", "0","", ".", "="
     };
     private int operator = 0;
     private JPanel panel = new JPanel(new BorderLayout(0, 0));
@@ -38,8 +38,9 @@ public class Main extends JFrame implements ActionListener {
     btnPanel.setBackground(Color.black);
     screen.setForeground(Color.white);
 
-    int[] numberButtons = {16,17,18,26,27,28,36,37,38,46,47,48};
+    int[] numberButtons = {16,17,18,26,27,28,36,37,38,47,48};
     int[] arithmeticButtons = {9,19,29,39,49};
+    int[] zero = {46};
 
     for (int i = 0; i < btns.length; i++) {
         btns[i] = new JButton(btnLabels[i]);
@@ -51,7 +52,9 @@ public class Main extends JFrame implements ActionListener {
         btns[i].setFont(new Font("sans-serif", Font.PLAIN, 20));
 
         btns[i].setMargin(new Insets(0, 5, 0, 5));
-        btnPanel.add(btns[i]);
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        btnPanel.add(btns[i],gbc);
 
         // Setting background color for number buttons
         if (Arrays.binarySearch(numberButtons, i) >= 0) {
@@ -59,20 +62,21 @@ public class Main extends JFrame implements ActionListener {
 
         // Setting background color for Arithmetic buttons
         } else if (Arrays.binarySearch(arithmeticButtons, i) >= 0) {
-            btns[i].setBackground(new Color(255, 159, 9));}
+            btns[i].setBackground(new Color(255, 159, 9));
+
+        } else if (Arrays.binarySearch(zero, i) >=0) {
+            btns[i].setBackground(new Color(100, 100, 98));
+            btns[i].setMargin(new Insets(0, 35, 0, -5));
+            gbc.gridwidth = 2;
+            
+        }
         
         // Setting background color for function buttons
         else {
             btns[i].setBackground(new Color(69, 68, 66));
         }
         
-        if (i == 46) {
-            btnPanel.add(btns[46], new GridBagConstraints(0, 4, 2, 1, 1.0, 1.0,
-            GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-            new Insets(2, 2, 2, 2), 0, 0));
-        } else {
-            btnPanel.add(btns[i]);
-        }
+        btnPanel.add(btns[i],gbc);
     }
 
     panel.add(btnPanel, BorderLayout.CENTER);
