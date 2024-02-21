@@ -48,9 +48,7 @@ public class Main extends JFrame implements ActionListener {
         btns[i].setBorderPainted(false);
         btns[i].setForeground(Color.WHITE);
         btns[i].addActionListener(this);
-
         btns[i].setFont(new Font("sans-serif", Font.PLAIN, 20));
-
         btns[i].setMargin(new Insets(0, 5, 0, 5));
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -68,7 +66,6 @@ public class Main extends JFrame implements ActionListener {
             btns[i].setBackground(new Color(100, 100, 98));
             btns[i].setMargin(new Insets(0, 35, 0, -5));
             gbc.gridwidth = 2;
-            
         }
         
         // Setting background color for function buttons
@@ -213,7 +210,7 @@ public class Main extends JFrame implements ActionListener {
                     String currentText = screen.getText();
                     if (!currentText.isEmpty()) {
                         double number = Double.parseDouble(currentText);
-                        number = -number; // Toggle the sign
+                        number = -1*number; // Toggle the sign
                         screen.setText(df.format(number)); // Format the number appropriately
                     }
                     break;
@@ -304,7 +301,7 @@ public class Main extends JFrame implements ActionListener {
             if (!screen.getText().isEmpty()) {
                 double currentInput = Double.parseDouble(screen.getText().toString());
                 double result = 0;
-                double radian = (currentInput * (Math.PI / 180));
+                double radian = Math.toRadians(currentInput);
 
                 switch (operation) {
                     case "sin":
