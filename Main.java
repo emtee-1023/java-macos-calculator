@@ -162,30 +162,54 @@ public class Main extends JFrame implements ActionListener {
 
                 case "+":
                     if (!screen.getText().isEmpty()) {
-                        firstNum = Double.parseDouble(screen.getText().toString());
-                        operator = 1;
+                        // Use a regular expression to extract only numeric characters
+                        String text = screen.getText().toString();
+                        String numericPart = text.replaceAll("[^0-9.]", ""); // Keep only digits and the dot
+            
+                    if (!numericPart.isEmpty()) {
+                        firstNum = Double.parseDouble(numericPart);
+                        operator = 2;
                         screen.setText("");
+                    }
                     }
                     break;
                 case "-":
                     if (!screen.getText().isEmpty()) {
-                        firstNum = Double.parseDouble(screen.getText().toString());
+                        // Use a regular expression to extract only numeric characters
+                        String text = screen.getText().toString();
+                        String numericPart = text.replaceAll("[^0-9.]", ""); // Keep only digits and the dot
+            
+                    if (!numericPart.isEmpty()) {
+                        firstNum = Double.parseDouble(numericPart);
                         operator = 2;
                         screen.setText("");
+                    }
                     }
                     break;
                 case "x":
                     if (!screen.getText().isEmpty()) {
-                        firstNum = Double.parseDouble(screen.getText().toString());
-                        operator = 3;
+                        // Use a regular expression to extract only numeric characters
+                        String text = screen.getText().toString();
+                        String numericPart = text.replaceAll("[^0-9.]", ""); // Keep only digits and the dot
+            
+                    if (!numericPart.isEmpty()) {
+                        firstNum = Double.parseDouble(numericPart);
+                        operator = 2;
                         screen.setText("");
+                    }
                     }
                     break;
                 case "÷":
                     if (!screen.getText().isEmpty()) {
-                        firstNum = Double.parseDouble(screen.getText().toString());
-                        operator = 4;
+                        // Use a regular expression to extract only numeric characters
+                        String text = screen.getText().toString();
+                        String numericPart = text.replaceAll("[^0-9.]", ""); // Keep only digits and the dot
+            
+                    if (!numericPart.isEmpty()) {
+                        firstNum = Double.parseDouble(numericPart);
+                        operator = 2;
                         screen.setText("");
+                    }
                     }
                     break;
                 case "xʸ":
@@ -242,7 +266,7 @@ public class Main extends JFrame implements ActionListener {
                 default:
             }
 
-            if (cmd.equalsIgnoreCase("=")) {
+            if (cmd.equalsIgnoreCase("=") || cmd.equalsIgnoreCase(")")) {
 
                 if (!screen.getText().isEmpty()) {
 
@@ -251,29 +275,36 @@ public class Main extends JFrame implements ActionListener {
                     switch (operator) {
                         case 1: // addition
                             screen.setText(String.valueOf(firstNum + secondNum));
+                            operator = 0; //reset
                             break;
                         case 2: // subtraction
                             screen.setText(String.valueOf(firstNum - secondNum));
+                            operator = 0; //reset
                             break;
                         case 3: // multiplication
                             screen.setText(String.valueOf(firstNum * secondNum));
+                            operator = 0; //reset
                             break;
                         case 4: // division
                             if (secondNum != 0){
                                 screen.setText(String.valueOf(firstNum / secondNum));
+                                operator = 0; //reset
                             }else {
                                 throw new ArithmeticException("Cannot divide by zero");
                             }
                             break;
                         case 5: // xʸ
                             screen.setText(String.valueOf(Math.pow(firstNum, secondNum)));
+                            operator = 0; //reset
                             break;
                         case 6: // ʸ√x
                             screen.setText(String.valueOf(Math.pow(firstNum, (1 / secondNum))));
+                            operator = 0; //reset
                             break;
                         
                         case 7: // Modulus
                             screen.setText(String.valueOf(firstNum % secondNum));
+                            operator = 0; //reset
                             break;
                         default:
                     }
