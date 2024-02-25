@@ -168,7 +168,7 @@ public class Main extends JFrame implements ActionListener {
             
                     if (!numericPart.isEmpty()) {
                         firstNum = Double.parseDouble(numericPart);
-                        operator = 2;
+                        operator = 1;
                         screen.setText("");
                     }
                     }
@@ -194,7 +194,7 @@ public class Main extends JFrame implements ActionListener {
             
                     if (!numericPart.isEmpty()) {
                         firstNum = Double.parseDouble(numericPart);
-                        operator = 2;
+                        operator = 3;
                         screen.setText("");
                     }
                     }
@@ -207,7 +207,7 @@ public class Main extends JFrame implements ActionListener {
             
                     if (!numericPart.isEmpty()) {
                         firstNum = Double.parseDouble(numericPart);
-                        operator = 2;
+                        operator = 4;
                         screen.setText("");
                     }
                     }
